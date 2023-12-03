@@ -1,0 +1,178 @@
+<!DOCTYPE html>
+<html lang="en">
+<head>
+    <meta charset="UTF-8">
+    <link href="https://fonts.googleapis.com/css2?
+    family=Roboto:wght@400;700&display=swap" rel="stylesheet">
+    <meta name="viewport" content="width=device-width, initial-scale=1.0">
+    <link rel="stylesheet" href="style.css">
+   
+
+    <title>yash | Login</title>
+
+</head>
+<style>
+   * {
+
+margin: 0;
+padding: 0;
+font-family: 'Roboto', sans-serif;
+   }
+    body{
+        background-image: url("log.jpg");
+        background-size: cover;
+        background-position: center;
+        background-attachment: fixed;
+        background-repeat: no-repeat;
+        
+    }
+    .box{
+        display: flex;
+        justify-content: center;
+        align-items: center;
+        min-height: 90vh;
+    }
+    .container{
+        width: 350px;
+        display: flex;
+        flex-direction: column;
+        padding: 0 15px 0 15px;
+        
+    }
+    span{
+        color: #000000;
+        font-size: small;
+        display: flex;
+        justify-content: center;
+        padding: 10px 0 10px 0;
+    }
+    header{
+        color: #000000;
+        font-size: 30px;
+        display: flex;
+        justify-content: center;
+        padding: 10px 0 10px 0;
+    }
+    
+    .input-field .input{
+        height: 45px;
+        width: 87%;
+        border: none;
+        border-radius: 30px;
+        color: #000000;
+        font-size: 15px;
+        padding: 0 0 0 45px;
+        background: rgba(1, 1, 1, 0.1);
+        outline: none;
+    }
+    i{
+        position: relative;
+        top: -33px;
+        left: 17px;
+        color: #000000;
+    }
+  
+    .submit{
+        border: none;
+        border-radius: 30px;
+        font-size: 15px;
+        height: 45px;
+        outline: none;
+        width: 100%;
+        color: rgb(0, 0, 0);
+        background: rgb(252, 249, 50);
+        cursor: pointer;
+        transition: .3s ;
+    }
+    .submit:hover{
+        box-shadow: 1px 5px 7px 1px rgba(14, 14, 14, 0.967);
+    }
+    
+    label a{
+        text-decoration: none;
+        color: #000000;
+    }
+    nav {
+			text-shadow: 0 4px 8px rgba(0, 0, 0, 0.2);
+			background-color: transparent;
+			text-align: right;
+			padding: 30px;
+            color:rgb(0, 0, 0);
+		}
+		nav a {
+			
+			display: inline-block;
+			padding: 30px;
+			font-size:larger;
+			color:rgb(0, 0, 0);
+			text-decoration:none;
+			font-weight: bold;
+			font-family:'Times New Roman', Times, serif;
+		}
+		nav a:hover {
+	
+			padding:none;
+            text-decoration: none;
+            color:rgb(245, 238, 238);
+		    text-decoration:none ;
+		}
+	</style>
+</head>
+<body>
+	<nav>
+		<a href="https://www.bseindia.com/">HOME</a>
+		<a href="tradingview.com">TRADING VIEW</a>
+		<a href="#">CONTACT</a>
+		<a href="#">OTHER</a>
+		
+		
+	</nav>
+    
+<body>
+  
+   <div class="box">
+    <form id="login-form">
+    <div class="container">
+
+        <div class="top">
+            <span>Admin panel</span>
+            <header>Login</header>
+        </div>
+
+        <div class="input-field">
+            <input type="text" class="input" placeholder="Username" id="username">
+            <i class='bx bx-user' ></i>
+        </div>
+
+        <div class="input-field">
+            <input type="password"  class="input" placeholder="Password" id="password">
+            <i class='bx bx-lock-alt'></i>
+        </div>
+
+        <div class="input-field">
+            <input type="submit" class="submit" value="Login" id="login-btn">
+        </div>
+
+       
+    </div>
+</form>
+</div> 
+<script>
+    const form = document.getElementById("login-form");
+
+    form.addEventListener("submit", (event) => {
+      event.preventDefault();
+      const username = document.getElementById("username").value;
+      const password = document.getElementById("password").value;
+
+      if (username === "test123" && password === "yash1234") {
+        
+        // space for directing
+        window.location.href = "weather.html";
+      } else {
+        alert("Invalid username or password");
+      }
+    });
+  </script> 
+</body>
+</html>

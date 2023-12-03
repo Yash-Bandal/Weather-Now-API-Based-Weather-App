@@ -1,0 +1,479 @@
+<!doctype html>
+<html lang="en">
+<head>
+    <script src="yash.js"></script>
+    
+    <meta charset="utf-8">
+    <meta name="viewport" content="width=device-width, initial-scale=1">
+    <title>Weather</title>
+    <link href="https://cdn.jsdelivr.net/npm/bootstrap@5.2.3/dist/css/bootstrap.min.css" rel="stylesheet"
+        integrity="sha384-rbsA2VBKQhggwzxH7pPCaAqO46MgnOM80zW1RWuH61DGLwZJEdK2Kadq2F9CUG65" crossorigin="anonymous">
+        
+        <style>
+            .navbar-brand {
+                font-family: Impact, Haettenschweiler, 'Arial Narrow Bold', sans-serif;
+                /* Replace "Your Font" with the actual font name */
+            }
+    
+            body{
+            background-image: url("sky2.png");
+            background-size: cover;
+            background-position: center;
+            background-attachment: fixed;
+            background-repeat: no-repeat;
+            
+        }
+        </style>
+    
+        <meta charset="utf-8">
+        <meta name="viewport" content="width=device-width, initial-scale=1">
+        <title>Weather</title>
+        <link href="https://cdn.jsdelivr.net/npm/bootstrap@5.2.3/dist/css/bootstrap.min.css" rel="stylesheet"
+            integrity="sha384-rbsA2VBKQhggwzxH7pPCaAqO46MgnOM80zW1RWuH61DGLwZJEdK2Kadq2F9CUG65" crossorigin="anonymous">
+            <script src="https://cdn.jsdelivr.net/npm/chart.js"></script>
+    
+</head>
+
+
+<body>
+    <nav class="navbar navbar-expand-lg " style="background-color: #9ecdff;">
+        <script src="https://cdn.jsdelivr.net/npm/bootstrap@5.2.3/dist/js/bootstrap.bundle.min.js"></script>
+
+        <div class="container-fluid">
+            <a class="navbar-brand" href="#">Weather Now⛅</a>
+            <button class="navbar-toggler" type="button" data-bs-toggle="collapse"
+                data-bs-target="#navbarSupportedContent" aria-controls="navbarSupportedContent" aria-expanded="false"
+                aria-label="Toggle navigation">
+                <span class="navbar-toggler-icon"></span>
+            </button>
+            <div class="collapse navbar-collapse" id="navbarSupportedContent">
+                <ul class="navbar-nav me-auto mb-2 mb-lg-0">
+                    <li class="nav-item">
+                        <a class="nav-link active" aria-current="page" href="#">Home</a>
+                    </li>
+                    <li class="nav-item">
+                        <a class="nav-link" href="#">About This Web</a>
+                    </li>
+                    <li class="nav-item dropdown">
+                        <a class="nav-link dropdown-toggle" href="#" role="button" data-bs-toggle="dropdown"
+                            aria-expanded="false">
+                            Near You
+                        </a>
+                        <ul class="dropdown-menu">
+                            <li><a class="dropdown-item" href="#">Tathawade</a></li>
+                            <li><a class="dropdown-item" href="#">Chinchwad</a></li>
+                            <li>
+                                <hr class="dropdown-divider">
+                            </li>
+                            <li><a class="dropdown-item" href="#">Pune</a></li>
+                        </ul>
+                    </li>
+                    <li class="nav-item dropdown">
+                        <a class="nav-link dropdown-toggle" href="#" role="button" data-bs-toggle="dropdown"
+                            aria-expanded="false">Contact</a>
+                        <ul class="dropdown-menu">
+                            <li><a class="dropdown-item" href="#">+91 820880659</a></li>
+                            <li><a class="dropdown-item" href="#">E-mail-yashl@gmail.com</a></li> 
+                            <li><a class="dropdown-item" href="https://www.google.com/maps/place/JSPM+Rajarshi+Shahu+College+Of+Engineering+,+Tathawade/@18.6197208,73.745023,17z/data=!3m1!4b1!4m6!3m5!1s0x3bc2bbbc138acb7b:0x67043867a211a31d!8m2!3d18.6197209!4d73.7498939!16s%2Fg%2F11fly22nwc?entry=ttu">Address</a></li>
+                        </ul>
+                    </li>
+                </ul>
+                <form class="d-flex" role="search">
+                    <input id="city" class="form-control me-2" type="search" placeholder="Search" aria-label="Search">
+                    <button class="btn btn-outline-success" type="submit" id="submit">Search</button>
+                </form>
+            </div>
+        </div>
+    </nav>
+
+
+
+    <div class="container">
+        <h1 class="my-4 text-center">Weather For <span id="cityName"></span>🌤</h1>
+        <main>
+            <div class="row row-cols-1 row-cols-md-3 mb-3 text-center">
+                <div class="col">
+                    <div class="card mb-4 rounded-3 shadow-sm border-primary">
+                        <div class="card-header py-3 text-bg-primary border-primary">
+
+                            <h4 class="my-0 fw-normal">Temperature🌡</h4>
+                        </div>
+                        <div class="card-body">
+                            <h1 class="card-title pricing-card-title"><span id="temp2"></span><small class="text-muted fw-light">°C</small>
+                            </h1>
+                            <ul class="list-unstyled mt-3 mb-4">
+                                <li>Temperature is <span id="temp"></span></li>
+                                <li>Minimum Temperature is <span id="min_temp"></span></li>
+                                <li>Maximum Temperature is <span id="max_temp"></span></li>
+
+                            </ul>
+                            <button type="button" class="w-100 btn btn-lg btn-light">Temp-Analyse</button>
+                        </div>
+                    </div>
+                </div>
+                <div class="col">
+                    <div class="card mb-4 rounded-3 shadow-sm border-primary">
+                        <div class="card-header py-3 text-bg-primary border-primary">
+                            <h4 class="my-0 fw-normal">Moisture🌨</h4>
+                        </div>
+                        <div class="card-body">
+                            <h1 class="card-title pricing-card-title"><span id="humidity2"></span><small class="text-muted fw-light"> %</small>
+                            </h1>
+                            <ul class="list-unstyled mt-3 mb-4">
+                                <li>Cloud Precipitation is <span id="cloud_pct"></span><span id="cloud_emoji"></span></li>
+                                <li>Feels like <span id="feels_like"></span></li>
+                                <li>Humidity is <span id="humidity"></span></li>
+
+                            </ul>
+                            <button type="button" class="w-100 btn btn-lg btn-light">Moisture-Analyse</button>
+                        </div>
+                    </div>
+                </div>
+                <div class="col">
+                    <div class="card mb-4 rounded-3 shadow-sm border-primary">
+                        <div class="card-header py-3 text-bg-primary border-primary">
+                            <h4 class="my-0 fw-normal">Wind💨</h4>
+                        </div>
+                        <div class="card-body">
+                            <h1 class="card-title pricing-card-title"><span id="wind_speed2"></span><small class="text-muted fw-light"> km/hr</small>
+                            </h1>
+                            <ul class="list-unstyled mt-3 mb-4">
+                                <li>Wind Speed is <span id="wind_speed"></span></li>
+                                <li>Wind Degrees is <span id="wind_degrees"></span></li>
+                                <li>Sunrise Time is <span id="sunrise"></span></li>
+
+                            </ul>
+                            <button type="button" class="w-100 btn btn-lg btn-light">Wind-Monitor</button>
+                        </div>
+                    </div>
+                </div>
+            </div>
+
+
+            <br>
+            <hr>
+      
+        
+
+
+    <script src="https://cdn.jsdelivr.net/npm/bootstrap@5.2.3/dist/js/bootstrap.bundle.min.js"
+        integrity="sha384-kenU1KFdBIe4zVF0s0G1M5b4hcpxyD9F7jL+jjXkk+Q2h455rYXK/7HAuoJl+0I4"
+        crossorigin="anonymous"></script>
+    <script>
+        const options = {
+            method: 'GET',
+            headers: {
+                'X-RapidAPI-Key': '206ac9a9a6mshd24a1c916e57812p1383f4jsn0f3293b14933',
+                'X-RapidAPI-Host': 'weather-by-api-ninjas.p.rapidapi.com'
+            }
+        };
+
+        let myChart;
+
+        const getWeather = (city) => {
+            cityName.innerHTML = city;
+
+            fetch(`https://weather-by-api-ninjas.p.rapidapi.com/v1/weather?city=${city}`, {
+                method: 'GET',
+                headers: {
+                    'X-RapidAPI-Key': '206ac9a9a6mshd24a1c916e57812p1383f4jsn0f3293b14933', // Replace with your actual API key
+                },
+            })
+            .then((response) => response.json())
+            .then((data) => {
+                const ctx = document.getElementById('weatherChart').getContext('2d');
+
+                if (myChart) {
+                    // If a chart instance exists, destroy it before creating a new one
+                    myChart.destroy();
+                }
+
+                myChart = new Chart(ctx, {
+                    type: 'bar',
+                    data: {
+                        labels: ['Temp', 'Min Temp', 'Max Temp', 'Cloud Pct', 'Feels Like', 'Humidity',],
+                        datasets: [{
+                            label: city,
+                            data: [data.temp, data.min_temp, data.max_temp, data.cloud_pct, data.feels_like, data.humidity, data.wind_speed],
+                            backgroundColor: 'rgba(54, 162, 235, 0.5)',
+                      
+            borderColor: 'rgba(54, 162, 235, 1)',
+            borderWidth: 1, // Add border width
+            borderRadius: 5, // Add border radius
+            hoverBackgroundColor: 'rgba(255, 99, 132, 0.8)', // Customize hover background color
+            hoverBorderColor: 'rgba(54, 162, 235, 1)', // Customize hover border color
+            hoverBorderWidth: 2, // Customize hover border width
+            barPercentage: 0.7, // Adjust bar width percentage
+            categoryPercentage: 0.8,
+                            fill: false,
+                        }],
+                    },
+                    options: {
+                        responsive: true,
+                        maintainAspectRatio: false,
+                        scales: {
+                            y: {
+                                beginAtZero: true,
+                            },
+                        },
+                    },
+                });
+
+                temp.innerHTML = data.temp;
+                temp2.innerHTML = data.temp;
+                min_temp.innerHTML = data.min_temp;
+                max_temp.innerHTML = data.max_temp;
+                cloud_pct.innerHTML = data.cloud_pct;
+                feels_like.innerHTML = data.feels_like;
+                humidity.innerHTML = data.humidity;
+                humidity2.innerHTML = data.humidity;
+                wind_speed.innerHTML = data.wind_speed;
+                wind_speed2.innerHTML = data.wind_speed;
+                wind_degrees.innerHTML = data.wind_degrees;
+                sunrise.innerHTML = data.sunrise;
+            })
+            .catch((error) => {
+                console.error('Error:', error);
+            });
+        }
+
+        submit.addEventListener('click', function (e) {
+            e.preventDefault();
+            const city = document.getElementById('city').value;
+            if (city) {
+                getWeather(city);
+            }
+        });
+        getWeather("Chinchwad")
+
+    </script>
+    <script src="https://cdn.jsdelivr.net/npm/chart.js"></script>
+
+    <div class="row">
+        <div class="col">
+            <canvas id="weatherChart"></canvas>
+        </div>
+    </div>
+
+
+
+
+<br>
+<hr>
+<br>
+<div class="table-responsive">
+    <table class="table text-center">
+        <thead>
+            <tr>
+                <th style="width: 34%;"></th>
+                <th style="width: 22%;">Temp</th>
+                <th style="width: 22%;">Floud_pct</th>
+                <th style="width: 22%;">Feels_like</th>
+                <th style="width: 22%;">Humidity</th>
+                <th style="width: 22%;">Max_temp</th>
+                <th style="width: 22%;">Min_temp</th>
+                <th style="width: 22%;">Sunrise</th>
+                <th style="width: 22%;">Sunset</th>                      
+                <th style="width: 22%;">Wind_degrees</th>
+                <th style="width: 22%;">Wind_speed</th>
+            </tr>
+        </thead>
+        <tbody>
+            <tr id="delhi-row">
+                <th scope="row" class="text-start">Delhi</th>
+                <td>32</td>
+                <td>40</td>
+                <td>34</td>
+                <td>48</td>
+                <td>32</td>
+                <td>32</td>
+                <td>168523169</td>
+                <td>1685281326</td>                            
+                <td>130</td>
+                <td>2.06</td>
+            </tr>
+            <tr id="jaipur-row">
+                <th scope="row" class="text-start">Jaipur</th>
+                <td>39</td>
+                <td>41</td>
+                <td>32</td>
+                <td>44</td>
+                <td>35</td>
+                <td>35</td>
+                <td>168523169</td>
+                <td>1685281326</td>                         
+                <td>126</td>
+                <td>1.86</td>
+            </tr>
+
+            <tr id="hyderabad-row">
+                <th scope="row" class="text-start">Jaipur</th>
+                <td>39</td>
+                <td>41</td>
+                <td>32</td>
+                <td>44</td>
+                <td>35</td>
+                <td>35</td>
+                <td>168523169</td>
+                <td>1685281326</td>                           
+                <td>126</td>
+                <td>1.86</td>
+            </tr>
+
+            <tr id="chennai-row">
+                <th scope="row" class="text-start">Jaipur</th>
+                <td>39</td>
+                <td>41</td>
+                <td>32</td>
+                <td>44</td>
+                <td>35</td>
+                <td>35</td>
+                <td>168523169</td>
+                <td>1685281326</td>                          
+                <td>126</td>
+                <td>1.86</td>
+            </tr>
+
+            <tr id="kolkatta-row">
+                <th scope="row" class="text-start">Jaipur</th>
+                <td>39</td>
+                <td>41</td>
+                <td>32</td>
+                <td>44</td>
+                <td>35</td>
+                <td>35</td>
+                <td>168523169</td>
+                <td>1685281326</td>                        
+                <td>126</td>
+                <td>1.86</td>
+            </tr>
+            
+        </tbody>
+
+    </table>
+</div>
+</main>
+</div>
+<script src="https://cdn.jsdelivr.net/npm/bootstrap@5.2.3/dist/js/bootstrap.bundle.min.js"
+integrity="sha384-kenU1KFdBIe4zVF0s0G1M5b4hcpxyD9F7jL+jjXkk+Q2h455rYXK/7HAuoJl+0I4"
+crossorigin="anonymous"></script>
+<script src="script3.js"></script>
+
+<script>
+// Function to fetch weather data from the API and update the table
+function updateWeatherData() {
+const cities = ['Delhi', 'Jaipur', 'Kolkata', 'Hyderabad', 'Chennai'];
+
+cities.forEach((city) => {
+    fetch(`https://weather-by-api-ninjas.p.rapidapi.com/v1/weather?city=${city}`, {
+        method: 'GET',
+        headers: {
+            'X-RapidAPI-Key': '206ac9a9a6mshd24a1c916e57812p1383f4jsn0f3293b14933', // Replace with your actual API key
+        },
+    })
+        .then((response) => response.json())
+        .then((data) => {
+            const cityRow = document.getElementById(`${city.toLowerCase()}-row`);
+            if (cityRow) {
+                // Update the table row with the new data
+                cityRow.innerHTML = `
+        <th scope="row" class="text-start">${city}</th>
+        <td>${data.temp}</td>
+        <td>${data.cloud_pct}</td>
+        <td>${data.feels_like}</td>
+        <td>${data.humidity}</td>
+        <td>${data.max_temp}</td>
+        <td>${data.min_temp}</td>
+        <td>${data.sunrise}</td>
+        <td>${data.sunset}</td>                   
+        <td>${data.wind_degrees}</td>
+        <td>${data.wind_speed}</td>
+      `;
+            }
+        })
+        .catch((error) => {
+            console.error('Error:', error);
+        });
+});
+}
+
+// Call the updateWeatherData function to populate the table initially
+updateWeatherData();
+</script>
+
+
+<hr>
+<br>
+
+
+<br>
+<h2 class="display-6 text-left mb-4">📅  News Portal</h2>
+<div class="row mb-2">
+<div class="col-md-6">
+    <div
+        class="row g-0 border rounded overflow-hidden flex-md-row mb-4 shadow-sm h-md-250 position-relative">
+        <div class="col p-4 d-flex flex-column position-static">
+            <strong class="d-inline-block mb-2 text-primary">World</strong>
+            <h3 class="mb-0">GLOBAL WARMING</h3>
+            <div class="mb-1 text-muted">May 17</div>
+            <p class="card-text mb-auto">Published. Geneva, 17 May 2023 (WMO) - Global temperatures are
+                likely to surge to record levels in the next five years, fuelled by heat-trapping
+                greenhouse gases and a naturally occurring El Niño event, according to a new update
+                issued by the World Meteorological Organization (WMO).</p>
+            <a href="https://public.wmo.int/en/media/press-release/global-temperatures-set-reach-new-records-next-five-years#:~:text=Published&text=Geneva%2C%2017%20May%202023%20(WMO,World%20Meteorological%20Organization%20(WMO)."
+                class="stretched-link">Continue reading</a>
+        </div>
+        <div class="col-auto d-none d-lg-block">
+            <svg class="bd-placeholder-img" width="250" height="350" xmlns="http://www.w3.org/2000/svg"
+                role="img" aria-label="Placeholder: Thumbnail" preserveAspectRatio="xMidYMid slice"
+                focusable="false">
+                <title>Placeholder</title>
+                <rect width="100%" height="100%" fill="#55595c"></rect>
+                <image href="gbw.jpg" width="150%" height="100%" preserveAspectRatio="xMidYMid slice" />
+
+            </svg>
+
+
+
+
+        </div>
+    </div>
+</div>
+
+<div class="col-md-6">
+    <div
+        class="row g-0 border rounded overflow-hidden flex-md-row mb-4 shadow-sm h-md-250 position-relative">
+        <div class="col p-4 d-flex flex-column position-static">
+            <strong class="d-inline-block mb-2 text-success">India</strong>
+            <h3 class="mb-0">Post title</h3>
+            <div class="mb-1 text-muted">Nov 11</div>
+            <p class="mb-auto">The temperatures in India during May are extremely high, between 28°C and
+                hot as 33°C, drinking water regularly is advisable.
+
+                You can expect a few rainy days in India during May, but usually the weather is
+                comfortable in May.
+
+                Our weather forecast can give you a great sense of what weather to expect in India in
+                May 2023..</p>
+            <a href="https://thewire.in/environment/climate-change-april-2023-heat-wave-india"
+                class="stretched-link">Continue reading</a>
+        </div>
+        <div class="col-auto d-none d-lg-block">
+            <svg class="bd-placeholder-img" width="250" height="350" xmlns="http://www.w3.org/2000/svg"
+                role="img" aria-label="Placeholder: Thumbnail" preserveAspectRatio="xMidYMid slice"
+                focusable="false">
+                <title>Placeholder</title>
+                <rect width="100%" height="100%" fill="#55595c"></rect>
+                <image href="jaip.jpg" width="150%" height="100%"
+                    preserveAspectRatio="xMidYMid slice" />
+
+            </svg>
+        </div>
+    </div>
+</div>
+</div>
+
+
+   
+</body>
+</html>
